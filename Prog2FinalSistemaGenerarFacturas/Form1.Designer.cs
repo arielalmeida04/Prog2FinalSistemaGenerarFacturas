@@ -31,11 +31,13 @@
             this.bttGenerarFactura = new System.Windows.Forms.Button();
             this.cb1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.cb2Clientes = new System.Windows.Forms.ComboBox();
+            this.bttImportar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bttGenerarFactura
             // 
-            this.bttGenerarFactura.Location = new System.Drawing.Point(273, 71);
+            this.bttGenerarFactura.Location = new System.Drawing.Point(273, 35);
             this.bttGenerarFactura.Name = "bttGenerarFactura";
             this.bttGenerarFactura.Size = new System.Drawing.Size(75, 44);
             this.bttGenerarFactura.TabIndex = 0;
@@ -46,14 +48,14 @@
             // cb1
             // 
             this.cb1.FormattingEnabled = true;
-            this.cb1.Location = new System.Drawing.Point(92, 84);
+            this.cb1.Location = new System.Drawing.Point(43, 35);
             this.cb1.Name = "cb1";
             this.cb1.Size = new System.Drawing.Size(175, 21);
             this.cb1.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(576, 91);
+            this.button1.Location = new System.Drawing.Point(273, 85);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(135, 23);
             this.button1.TabIndex = 2;
@@ -61,11 +63,31 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // cb2Clientes
+            // 
+            this.cb2Clientes.FormattingEnabled = true;
+            this.cb2Clientes.Location = new System.Drawing.Point(43, 71);
+            this.cb2Clientes.Name = "cb2Clientes";
+            this.cb2Clientes.Size = new System.Drawing.Size(175, 21);
+            this.cb2Clientes.TabIndex = 3;
+            // 
+            // bttImportar
+            // 
+            this.bttImportar.Location = new System.Drawing.Point(273, 114);
+            this.bttImportar.Name = "bttImportar";
+            this.bttImportar.Size = new System.Drawing.Size(135, 23);
+            this.bttImportar.TabIndex = 4;
+            this.bttImportar.Text = "Importar CSV";
+            this.bttImportar.UseVisualStyleBackColor = true;
+            this.bttImportar.Click += new System.EventHandler(this.bttImportar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bttImportar);
+            this.Controls.Add(this.cb2Clientes);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cb1);
             this.Controls.Add(this.bttGenerarFactura);
@@ -81,6 +103,8 @@
         private System.Windows.Forms.Button bttGenerarFactura;
         private System.Windows.Forms.ComboBox cb1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cb2Clientes;
+        private System.Windows.Forms.Button bttImportar;
     }
 }
 

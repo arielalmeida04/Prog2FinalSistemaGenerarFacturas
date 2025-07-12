@@ -14,17 +14,15 @@ namespace Prog2FinalSistemaGenerarFacturas
 {
     public partial class Form1 : Form
     {
-        Items pu = new ProdUnitario(100, "Cable Bipolar", "Metro", 100,200);
-
+        Items pu = new ProdUnitario(100, "Cable Bipolar", "Metro", 100, 200);
         Items sv = new Servicio(404, "Programador", 20, 8);
-
         Factura f;
         Empresa empresa = new Empresa("UTN", 505);
-
+        Stack<Factura> facturas = new Stack<Factura>();
         public Form1()
         {
             InitializeComponent();
-            
+
             cb1.Items.Add(pu.Descripcion());
 
             cb1.Items.Add(sv.Descripcion());
@@ -43,19 +41,19 @@ namespace Prog2FinalSistemaGenerarFacturas
                         long cuit = Convert.ToInt64(gf.textBox2.Text);
                         Persona p = new Persona(nomnbre, cuit);
                         empresa.AgregarCliente(p);
-               
+
                     }
                     gf.Dispose();
                 }
 
-               
+
             }
             catch (Exception a)
             {
 
                 MessageBox.Show(a.Message);
             }
-            
+
 
         }
 
@@ -66,7 +64,7 @@ namespace Prog2FinalSistemaGenerarFacturas
 
             try
             {
-                Stack<Factura> facturas = bf.Deserialize(fl) as Stack<Factura>;
+                facturas = bf.Deserialize(fl) as Stack<Factura>;
             }
             catch (Exception ex)
             {
@@ -85,8 +83,8 @@ namespace Prog2FinalSistemaGenerarFacturas
             BinaryFormatter bf = new BinaryFormatter();
             try
             {
-                
-                bf.Serialize(fl, f);
+
+                bf.Serialize(fl, facturas);
             }
             catch (Exception s)
             {
@@ -114,10 +112,10 @@ namespace Prog2FinalSistemaGenerarFacturas
 
                 foreach (Factura factura in facturas)
                 {
-                    sw.WriteLine(Factura.NroFactura + ";" + 
-                        factura.GetCliente().GetCuit() + ";" + 
-                        factura.GetFecha().Date + ";" + 
-                        factura.GetFecha().TimeOfDay + ";" + 
+                    sw.WriteLine(Factura.NroFactura + ";" +
+                        factura.GetCliente().GetCuit() + ";" +
+                        factura.GetFecha().Date + ";" +
+                        factura.GetFecha().TimeOfDay + ";" +
                         factura.precioTotal);
                 }
             }

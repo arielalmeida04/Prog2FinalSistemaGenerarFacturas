@@ -12,6 +12,9 @@ namespace Prog2FinalSistemaGenerarFacturas
         string nombre;
         long cuit;
 
+        public string Nombre { get => nombre; set => nombre = value; }
+        public long Cuit { get => cuit; set => cuit = value; }
+
         public Persona(string nombre, long cuit)
         {
             this.nombre = nombre;

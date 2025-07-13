@@ -17,7 +17,7 @@ namespace Prog2FinalSistemaGenerarFacturas
         Items pu = new ProdUnitario(100, "Cable Bipolar", "Metro", 100, 200);
         Items sv = new Servicio(404, "Programador", 20, 8);
         Factura f;
-     
+
         Empresa empresa = new Empresa("UTN", 505);
         Stack<Factura> facturas = new Stack<Factura>();
         public Form1()
@@ -56,7 +56,7 @@ namespace Prog2FinalSistemaGenerarFacturas
                     empresa.AgregarFactura(f);
                 }
 
-                 
+
             }
             catch (Exception a)
             {
@@ -69,7 +69,7 @@ namespace Prog2FinalSistemaGenerarFacturas
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            FileStream fl = new FileStream("ListaCliente.bat", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            FileStream fl = new FileStream("ListaCliente.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
             BinaryFormatter bf = new BinaryFormatter();
 
             try
@@ -89,7 +89,7 @@ namespace Prog2FinalSistemaGenerarFacturas
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            FileStream fl = new FileStream("ListaCliente.bat", FileMode.Create, FileAccess.Write);
+            FileStream fl = new FileStream("ListaCliente.txt", FileMode.Create, FileAccess.Write);
             BinaryFormatter bf = new BinaryFormatter();
             try
             {
@@ -113,11 +113,11 @@ namespace Prog2FinalSistemaGenerarFacturas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FileStream fs = new FileStream("listaFacturas.bat", FileMode.CreateNew, FileAccess.Write);
+            FileStream fs = new FileStream("listaFacturas.txt", FileMode.CreateNew, FileAccess.Write);
             StreamWriter sw = new StreamWriter(fs);
             try
             {
-                
+
 
                 Stack<Factura> facturas = empresa.ObtenerFacturas();
 
@@ -138,7 +138,7 @@ namespace Prog2FinalSistemaGenerarFacturas
 
         private void bttImportar_Click(object sender, EventArgs e)
         {
-            FileStream fl = new FileStream("ListaCliente.bat",FileMode.OpenOrCreate,FileAccess.Read);
+            FileStream fl = new FileStream("listaItems.txt", FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader sr = new StreamReader(fl);
             try
             {
@@ -147,13 +147,17 @@ namespace Prog2FinalSistemaGenerarFacturas
                     string linea = sr.ReadLine();
                     string[] campos = linea.Split(';');
 
-                    int nroFactura= int.Parse(campos[0]);
-                    long cuit = long.Parse(campos[1]);
-                    DateTime fecha = DateTime.Parse(campos[2]);
-                    DateTime fechehora = DateTime.Parse(campos[3]);
-                    double total = double.Parse(campos[4]);
-                    
-                    //Tengo dudas con este apartado si lo hice bien, no entendi si es lo que buscaban a la hora de importar o exportar.
+                    int codigo = int.Parse(campos[0]);
+                    string nombre = campos[1];
+                    string unidadDemedida = campos[2];
+                    double preciounidad = double.Parse(campos[3]);
+                    int cantidad = int.Parse(campos[4]);
+
+                    Items p = new ProdUnitario(codigo, nombre, unidadDemedida, preciounidad, cantidad);
+                    f.AgregarItems(p);
+                    empresa.AgregarFactura(f);
+
+
                 }
             }
             catch (Exception)
@@ -161,6 +165,31 @@ namespace Prog2FinalSistemaGenerarFacturas
 
                 throw;
             }
+        }
+
+        private void bttExportarClientes_Click(object sender, EventArgs e)
+        {
+            FileStream fs = new FileStream("listaClientes.txt", FileMode.CreateNew, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(fs);
+            try
+            {
+                Queue<Persona> clientes = empresa.ObtenerLista();
+
+                foreach (Persona item in clientes)
+                {
+                    sw.WriteLine(item.Cuit + ';' + item.Nombre);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                sw.Close();
+                fs.Close();
+            }
+
         }
     }
 }

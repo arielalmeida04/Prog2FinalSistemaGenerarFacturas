@@ -33,6 +33,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.cb2Clientes = new System.Windows.Forms.ComboBox();
             this.bttImportar = new System.Windows.Forms.Button();
+            this.bttExportarClientes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bttGenerarFactura
@@ -59,7 +60,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(135, 23);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Guardar CSV";
+            this.button1.Text = "Exportar Facturas";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -73,19 +74,30 @@
             // 
             // bttImportar
             // 
-            this.bttImportar.Location = new System.Drawing.Point(273, 114);
+            this.bttImportar.Location = new System.Drawing.Point(273, 152);
             this.bttImportar.Name = "bttImportar";
             this.bttImportar.Size = new System.Drawing.Size(135, 23);
             this.bttImportar.TabIndex = 4;
-            this.bttImportar.Text = "Importar CSV";
+            this.bttImportar.Text = "Importar Productos";
             this.bttImportar.UseVisualStyleBackColor = true;
             this.bttImportar.Click += new System.EventHandler(this.bttImportar_Click);
+            // 
+            // bttExportarClientes
+            // 
+            this.bttExportarClientes.Location = new System.Drawing.Point(273, 123);
+            this.bttExportarClientes.Name = "bttExportarClientes";
+            this.bttExportarClientes.Size = new System.Drawing.Size(135, 23);
+            this.bttExportarClientes.TabIndex = 5;
+            this.bttExportarClientes.Text = "Exportar Clientes";
+            this.bttExportarClientes.UseVisualStyleBackColor = true;
+            this.bttExportarClientes.Click += new System.EventHandler(this.bttExportarClientes_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.bttExportarClientes);
             this.Controls.Add(this.bttImportar);
             this.Controls.Add(this.cb2Clientes);
             this.Controls.Add(this.button1);
@@ -105,6 +117,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cb2Clientes;
         private System.Windows.Forms.Button bttImportar;
+        private System.Windows.Forms.Button bttExportarClientes;
     }
 }
 

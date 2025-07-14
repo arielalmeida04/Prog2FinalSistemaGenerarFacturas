@@ -113,7 +113,7 @@ namespace Prog2FinalSistemaGenerarFacturas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FileStream fs = new FileStream("listaFacturas.txt", FileMode.CreateNew, FileAccess.Write);
+            FileStream fs = new FileStream("listaFacturas.txt", FileMode.Create, FileAccess.Write);
             StreamWriter sw = new StreamWriter(fs);
             try
             {
@@ -155,8 +155,9 @@ namespace Prog2FinalSistemaGenerarFacturas
 
                     Items p = new ProdUnitario(codigo, nombre, unidadDemedida, preciounidad, cantidad);
                     f.AgregarItems(p);
-                    empresa.AgregarFactura(f);
 
+                    empresa.AgregarFactura(f);
+                    listBox1.Items.Add(p.Descripcion());  
 
                 }
             }
@@ -169,7 +170,7 @@ namespace Prog2FinalSistemaGenerarFacturas
 
         private void bttExportarClientes_Click(object sender, EventArgs e)
         {
-            FileStream fs = new FileStream("listaClientes.txt", FileMode.CreateNew, FileAccess.Write);
+            FileStream fs = new FileStream("listaClientes.txt", FileMode.Create, FileAccess.Write);
             StreamWriter sw = new StreamWriter(fs);
             try
             {

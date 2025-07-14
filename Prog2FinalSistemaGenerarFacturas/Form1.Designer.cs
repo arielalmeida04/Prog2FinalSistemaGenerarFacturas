@@ -34,6 +34,7 @@
             this.cb2Clientes = new System.Windows.Forms.ComboBox();
             this.bttImportar = new System.Windows.Forms.Button();
             this.bttExportarClientes = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // bttGenerarFactura
@@ -92,11 +93,20 @@
             this.bttExportarClientes.UseVisualStyleBackColor = true;
             this.bttExportarClientes.Click += new System.EventHandler(this.bttExportarClientes_Click);
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(43, 123);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(175, 147);
+            this.listBox1.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.bttExportarClientes);
             this.Controls.Add(this.bttImportar);
             this.Controls.Add(this.cb2Clientes);
@@ -118,6 +128,7 @@
         private System.Windows.Forms.ComboBox cb2Clientes;
         private System.Windows.Forms.Button bttImportar;
         private System.Windows.Forms.Button bttExportarClientes;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
